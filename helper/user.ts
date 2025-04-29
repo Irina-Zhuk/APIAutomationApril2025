@@ -8,7 +8,7 @@
 import {faker} from "@faker-js/faker";
 import {User} from "../src/tests/interface";
 import * as supertest from "supertest";
-const request = supertest('http://localhost:8001/api/v1')
+const request = supertest('http://localhost:8001/api/v1/')
 
 
 
@@ -50,7 +50,7 @@ export function signUp(user: User): Promise<any> {
     })
 }
 
-export function signUp2(user: User): Promise<any> {
+export function signUp2(user: User)  {
     return
     request
             .post('users/signup')
@@ -70,7 +70,7 @@ export function login(user: User): Promise<any> {
     })
 }
 
-export function login2(user: User): Promise<any> {
+export function login2(user: User) {
     return  request
         .post('users/login')
         .send (user)
@@ -89,7 +89,7 @@ export function deleteFunction(cookie: string): Promise<any> {
     })
 }
 
-export function deleteFunction2(cookie:string): Promise<any> {
+export function deleteFunction2(cookie:string) {
     return
     request
         .delete('users/deleteMe')
