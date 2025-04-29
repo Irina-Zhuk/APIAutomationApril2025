@@ -85,24 +85,11 @@ describe('USER SIGNUP AND LOGIN', () => {
                        if (err) return done(err)
                        expect(deleteRes.statusCode).toBe(200)
                        expect(deleteRes.body.message).toBe('User deleted successfully')
-                   }
+                   })
 
-                .then((loginRes) => {
-                    console.log(loginRes.body, 'loginRes')
-                    expect(loginRes.statusCode).toBe(201)
-
-                    expect(loginRes.body.status).toEqual("success")
-                    console.log('cookie', loginRes.headers['set-cookie'][0])
-                    cookie = loginRes.headers['set-cookie'][0].split('; ')[0]
-                    return deleteFunction(cookie)
-                })
-                .then((deleteRes) => {
-                    expect(deleteRes.statusCode).toBe(200)
-                    expect(deleteRes.body.message).toBe('User deleted successfully')
-
-                    return login(user)
-                })
-                .then((loginAfterDeletion) => {
+                login2(user)
+                    .end((err,loginAfterDeletions) => {
+                    if (err) return done(err)
                     expect(loginAfterDeletion.statusCode).toBe(401)
                     expect(loginAfterDeletion.body.message).toBe('Incorrect email or password')
                 })
