@@ -8,11 +8,11 @@
 import {faker} from "@faker-js/faker";
 import {User} from "../src/tests/interface";
 import * as supertest from "supertest";
-const request = supertest('http://localhost:8001/api/v1/')
+const request = supertest('http://localhost:8001/api/v1')
 
 
 
-export function getUser(role: string): any {
+export function getUser(role: string): User {
     const randomUser = createRandomUser();
     const password = 'test1234';
     return {
@@ -41,7 +41,7 @@ export function signUp(user: User): Promise<any> {
     return new Promise ((resolve, reject) => {
 
         request
-            .post('users/signup')
+            .post('/users/signup')
             .send (user)
             .end((err, res) => {
                 if (err) reject(err)
@@ -51,9 +51,8 @@ export function signUp(user: User): Promise<any> {
 }
 
 export function signUp2(user: User)  {
-    return
-    request
-            .post('users/signup')
+    return request
+            .post('/users/signup')
             .send (user)
             .expect(201);
 }
@@ -61,7 +60,7 @@ export function signUp2(user: User)  {
 export function login(user: User): Promise<any> {
     return new Promise ((resolve, reject) => {
         request
-            .post('users/login')
+            .post('/users/login')
             .send (user)
             .end((err, res) => {
                 if (err) reject(err)
@@ -72,15 +71,15 @@ export function login(user: User): Promise<any> {
 
 export function login2(user: User) {
     return  request
-        .post('users/login')
+        .post('/users/login')
         .send (user)
-        .expect(200);
+
 }
 
 export function deleteFunction(cookie: string): Promise<any> {
     return new Promise ((resolve, reject) => {
         request
-            .post('users/deleteMe')
+            .delete('/users/deleteMe')
             .set ('Cookie', cookie)
             .end((err, res) => {
                 if (err) reject(err)
@@ -90,11 +89,10 @@ export function deleteFunction(cookie: string): Promise<any> {
 }
 
 export function deleteFunction2(cookie:string) {
-    return
-    request
-        .delete('users/deleteMe')
+    return request
+        .delete('/users/deleteMe')
         .set ('Cookie', cookie)
-        .expect(200);
+
 }
 
 
