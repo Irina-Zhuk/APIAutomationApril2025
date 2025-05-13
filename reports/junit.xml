@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="0" errors="0" time="3.936">
-  <testsuite name="USER UPDATE - /users/updateME" errors="0" failures="0" skipped="0" timestamp="2025-05-02T04:16:53" time="3.645" tests="2">
-    <testcase classname="USER UPDATE - /users/updateME should update the user name and email" name="USER UPDATE - /users/updateME should update the user name and email" time="0.034">
-    </testcase>
-    <testcase classname="USER UPDATE - /users/updateME should update the photo" name="USER UPDATE - /users/updateME should update the photo" time="0.052">
+<testsuites name="jest tests" tests="1" failures="1" errors="0" time="3.329">
+  <testsuite name="Create Tour" errors="0" failures="1" skipped="0" timestamp="2025-05-13T02:09:38" time="3.037" tests="1">
+    <testcase classname="Create Tour Should create a Tour" name="Create Tour Should create a Tour" time="0.421">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 201
+Received: 404
+    at /Users/irinairina/Desktop/Lecture/API_Automation/src/tests/tour/create_tour_positive.spec.ts:36:36
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
     </testcase>
   </testsuite>
 </testsuites>
