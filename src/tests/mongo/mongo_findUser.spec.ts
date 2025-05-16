@@ -1,13 +1,16 @@
 import {getUser, signUp} from "../../../helper/user";
 import {ObjectId} from "mongodb";
+import {MongoDbConnection} from "../../../helper/mongo_db";
 
 const {MongoClient, Db} = require('mongodb');
 
 const dotenv = require('dotenv');
 dotenv.config();
+//let db : typeof Db
 
 describe("MONGODB connection", () => {
-    let connection: typeof MongoClient
+    //MongoDbConnection();
+let connection: typeof MongoClient
     let db : typeof Db
     beforeAll(async() => {
         try {
@@ -24,11 +27,11 @@ describe("MONGODB connection", () => {
     afterAll(async() => {
         await connection.close();
     })
-    it('should connect  to the collection and find user ', async () => {
+    it.only('should connect  to the collection and find user ', async () => {
         const users = db.collection('users');
         console.log(users, 'users');
         //Retrieve the document in the collection
-        const user = await users.findOne({name: 'Allen55'});
+        const user = await users.findOne({name: 'Kamille6'});
         console.log(user);
     });
     it('should create new user with imported data ', async () => {
