@@ -35,5 +35,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Jest Test
-        run: npx jest test.spec.ts
+
+
+      - name: Run tests with report output
+        run:
+             mkdir -p test-results
+             npx jest test.spec.ts -- --reporter=junit --reporter-options mochaFile=test-results/results.xml
+
+      - name: Upload test report
+        if: always() # Uploads even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report-${{ matrix.os }}-node${{ matrix.node }}
+          path: test-results/results.xml
