@@ -1,0 +1,39 @@
+name: Node Multiplatform CI
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at 00:00 UTC
+  workflow_dispatch: # Allows manual triggering
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  jest-test-for-push:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+        node: [18, 20]
+
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Jest Test
+        run: npx jest test.spec.ts
