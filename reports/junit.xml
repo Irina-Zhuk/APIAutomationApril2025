@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="6" failures="0" errors="0" time="3.726">
-  <testsuite name="POSTS" errors="0" failures="0" skipped="0" timestamp="2025-05-16T02:13:42" time="3.428" tests="6">
-    <testcase classname="POSTS get request" name="POSTS get request" time="0.33">
-    </testcase>
-    <testcase classname="POSTS POST request" name="POSTS POST request" time="0.09">
-    </testcase>
-    <testcase classname="POSTS PATCH request with title version 1" name="POSTS PATCH request with title version 1" time="0.124">
-    </testcase>
-    <testcase classname="POSTS PATCH request with title version 2" name="POSTS PATCH request with title version 2" time="0.136">
-    </testcase>
-    <testcase classname="POSTS PATCH request with title version 3" name="POSTS PATCH request with title version 3" time="0.087">
-    </testcase>
-    <testcase classname="POSTS DELETE request" name="POSTS DELETE request" time="0.08">
+<testsuites name="jest tests" tests="1" failures="1" errors="0" time="2.776">
+  <testsuite name="Create Tour" errors="0" failures="1" skipped="0" timestamp="2025-05-20T02:47:16" time="2.469" tests="1">
+    <testcase classname="Create Tour Should create a Tour" name="Create Tour Should create a Tour" time="0.49">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 201
+Received: 404
+    at /Users/irinairina/Desktop/Lecture/API_Automation/src/tests/tour/create_tour_positive.spec.ts:36:36
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
     </testcase>
   </testsuite>
 </testsuites>
